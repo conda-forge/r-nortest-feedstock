@@ -1,5 +1,4 @@
 {% set version = '1.0-4' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,12 +9,13 @@ package:
 source:
   fn: nortest_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/nortest_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/nortest/nortest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/nortest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/nortest/nortest_{{ version }}.tar.gz
   sha256: a3850a048181d5d059c1e74903437569873b430c915b709808237d71fee5209f
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,14 +23,15 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
   run:
     - r-base
 
 test:
   commands:
-    - $R -e "library('nortest')"  # [not win]
+    - $R -e "library('nortest')"           # [not win]
     - "\"%R%\" -e \"library('nortest')\""  # [win]
 
 about:
@@ -48,3 +49,4 @@ extra:
     - daler
     - jdblischak
     - cbrueffer
+    - dbast
