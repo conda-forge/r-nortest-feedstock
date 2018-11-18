@@ -14,9 +14,9 @@ source:
   sha256: a3850a048181d5d059c1e74903437569873b430c915b709808237d71fee5209f
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -39,8 +39,7 @@ about:
   license: GPL (>= 2)
   summary: Five omnibus tests for testing the composite hypothesis of normality.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
