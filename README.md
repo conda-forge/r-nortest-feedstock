@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-nortest-feeds
 
 Home: https://CRAN.R-project.org/package=nortest
 
-Package license: GPL (>= 2)
+Package license: GPL-2.0-or-later
 
 Summary: Five omnibus tests for testing the composite hypothesis of normality.
 
